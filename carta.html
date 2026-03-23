@@ -1,259 +1,171 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para María 🌹</title>
+    <title>Para Mi Negrita Bella ❤️</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=Quicksand:wght@300;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Dancing+Script:wght@700&display=swap');
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary-violet: #a29bfe; 
+            --secondary-violet: #6c5ce7;
+            --text-color: #2d3436;
+        }
+
+        body, html {
+            margin: 0; padding: 0; height: 100%; width: 100%;
+            font-family: 'Poppins', sans-serif; overflow: hidden;
+            display: flex; justify-content: center; align-items: center;
+        }
 
         body {
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
-            font-family: 'Quicksand', sans-serif;
-            overflow: hidden;
-            position: relative;
+            background: linear-gradient(-45deg, #a29bfe, #ffeaa7, #fab1a0, #81ecec);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
         }
 
-        /* --- FONDO ANIMADO --- */
-        .bg-animation {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;
-            background: linear-gradient(45deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-        }
-        .heart {
-            position: absolute; bottom: -100px; width: 20px; height: 20px;
-            background: rgba(255, 255, 255, 0.5); transform: rotate(45deg);
-            animation: float 15s linear infinite;
-        }
-        .heart::before, .heart::after {
-            content: ""; position: absolute; width: 20px; height: 20px;
-            background: rgba(255, 255, 255, 0.5); border-radius: 50%;
-        }
-        .heart::before { top: -10px; left: 0; }
-        .heart::after { top: 0; left: -10px; }
-        @keyframes float {
-            0% { transform: translateY(0) rotate(45deg) scale(0.8); opacity: 1; }
-            100% { transform: translateY(-1000px) rotate(45deg) scale(1.2); opacity: 0; }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        /* --- TARJETA PRINCIPAL --- */
-        .card {
-            position: relative; z-index: 10;
-            width: 90%; max-width: 550px;
-            max-height: 85vh; 
-            overflow-y: auto;
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border-radius: 24px; border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-            padding: 40px 30px;
-            opacity: 0; transform: translateY(30px);
-            animation: cardEntrance 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.5s;
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 30px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            padding: 40px;
+            width: 85%;
+            max-width: 450px;
+            text-align: center;
+            z-index: 10;
         }
-
-        .card::-webkit-scrollbar { width: 8px; }
-        .card::-webkit-scrollbar-track { background: rgba(255,255,255,0.3); border-radius: 10px; }
-        .card::-webkit-scrollbar-thumb { background: #ff9a9e; border-radius: 10px; }
-
-        @keyframes cardEntrance { to { opacity: 1; transform: translateY(0); } }
 
         h1 {
-            font-family: 'Playfair Display', serif; color: #d63384;
-            font-size: 2.5rem; margin-bottom: 20px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 32px;
+            color: var(--secondary-violet);
+            margin-bottom: 20px;
         }
-        
+
         p {
-            font-size: 1.05rem; color: #555; line-height: 1.7; margin-bottom: 15px;
-            opacity: 0; transform: translateY(10px); transition: 0.8s ease;
+            font-weight: 300;
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-color);
+            margin-bottom: 30px;
         }
-        .show-text { opacity: 1; transform: translateY(0); }
 
-        .clue-box {
-            margin-top: 25px; background: #fff; padding: 15px; border-radius: 12px;
-            border-left: 4px solid #ff9a9e; font-size: 0.95rem; opacity: 0; transition: 0.8s ease;
-        }
-        .clue-box.visible { opacity: 1; }
-        
-        .action-btn {
-            display: block; margin: 30px auto 10px auto;
-            padding: 12px 30px; border: none; border-radius: 50px;
-            background: linear-gradient(45deg, #d63384, #ff9a9e);
-            color: white; font-size: 1rem; font-weight: bold; cursor: pointer;
-            box-shadow: 0 5px 15px rgba(214, 51, 132, 0.3);
-            opacity: 0; transform: scale(0.8); transition: all 0.5s ease;
-        }
-        .action-btn:hover { transform: scale(1.05); box-shadow: 0 8px 20px rgba(214, 51, 132, 0.5); }
-        .action-btn.visible { opacity: 1; transform: scale(1); }
+        .highlight { font-weight: 600; color: var(--secondary-violet); }
 
-        /* --- MODAL SORPRESA CON GIF --- */
+        .btn-special {
+            padding: 15px 35px;
+            background: linear-gradient(45deg, var(--secondary-violet), var(--primary-violet));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(108, 92, 231, 0.3);
+            transition: 0.3s;
+        }
+
+        .btn-special:hover { transform: scale(1.05); }
+
+        /* --- MODAL SORPRESA --- */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.6); z-index: 100;
-            display: flex; justify-content: center; align-items: center;
-            opacity: 0; pointer-events: none; transition: 0.5s;
+            background: rgba(0,0,0,0.7); z-index: 100;
+            display: none; justify-content: center; align-items: center;
         }
-        .modal-overlay.active { opacity: 1; pointer-events: all; }
 
         .modal-content {
             background: white; padding: 25px; border-radius: 20px;
-            text-align: center; width: 90%; max-width: 350px; /* Tamaño carta pequeña */
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-            transform: scale(0.7); transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .modal-overlay.active .modal-content { transform: scale(1); }
-        
-        .modal-content h2 { 
-            color: #d63384; font-family: 'Playfair Display', serif; 
-            margin-bottom: 15px; font-size: 1.8rem;
+            text-align: center; width: 90%; max-width: 350px;
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        /* Estilo del contenedor del GIF */
-        .video-wrapper {
-            width: 100%;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-bottom: 15px;
-            border: 2px solid #ff9a9e;
-        }
-        
-        .gif-content {
-            width: 100%;
-            height: auto;
-            display: block; /* Elimina espacios extra */
+        @keyframes popIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+        .gif-wrapper {
+            width: 100%; border-radius: 15px; overflow: hidden;
+            border: 2px solid var(--primary-violet); margin-bottom: 15px;
         }
 
-        .confetti {
-            position: absolute; width: 10px; height: 10px; background-color: #f00;
-            animation: confetti-fall 2s linear forwards;
-        }
-        @keyframes confetti-fall { to { transform: translateY(100vh) rotate(720deg); } }
+        .gif-wrapper img { width: 100%; display: block; }
 
+        .heart-particle {
+            position: absolute; color: var(--primary-violet);
+            pointer-events: none; animation: floatUp 3s linear forwards;
+            z-index: 100;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(0); opacity: 1; }
+            100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="bg-animation" id="bg"></div>
-
-    <div class="card">
-        <h1>Hola, María ✨</h1>
-        
-      <div id="content-body">
-    <p>Hola… antes que nada, <strong>tranquila</strong>, no hay nada raro aquí . Prometo que esto es completamente inofensivo y hecho con buenas intenciones.</p>
-
-    <p>Espero que te haya gustado el detalle anterior(Se muere de nervios por dentro). Ya hemos interactuado antes, muy pocas veces (mis cálculos dicen que casi nada, sjsj),  me pareciste alguien que valía totalmente la pena intentar conocer.</p>
-
-    <p>Y por si acaso te lo preguntas… no, no soy feo . Al menos eso dicen mi mamá y mi abuelita , y ellas nunca mienten (o eso quiero creer).</p>
-
-    <p>La verdad es que prefiero ser sincero y directo: <strong>me interesas mucho</strong>. Además, se me hace que eres muy linda, y siendo honesto, cada vez que te veo mi corazón se acelera.</p>
-
-    <p>Me gustaría tener la oportunidad de conocerte mejor, sin presiones ni expectativas raras, solo siendo nosotros mismos.</p>
-
-    <p>Espero que algún día podamos salir, ir por algo de comer o simplemente pasar un buen rato y conocernos mejor.</p>
-
-    <p>lo mas seguro apenas te llegue esta carta  te envie un mensaje ,solo para confirmar si te gustaría conocerme un poco más o quizá vernos algún día. No hay compromiso ni presión, solo la intención de saber si te animas .</p>
-
-    <p></p>
-
-</div>
-
-
-        <div class="clue-box" id="clue">
-            <strong> Una Pista de quien soy :</strong> ¿Encebollado o bolon? <br>
-        </div>
-
-        <button id="finalBtn" class="action-btn"> Un Pequeño detalle para ti </button>
+    <div class="glass-card">
+        <div style="font-size: 40px; margin-bottom: 10px;">🌷</div>
+        <h1>Para mi negrita bella</h1>
+       <p>
+            Mi amor, <span class="highlight">te quiero solo para mí</span>. 
+            Eres la persona con la que quiero compartir cada momento y 
+            <span class="highlight">formar una familia contigo en un futuro, te amooooooooo</span>.
+            <br><br>
+            Mi negrita hermosa, mi tulipán, mi vida, mi todo... solo espero que algún día podamos estar juntos y
+             compartir todo lo que teníamos planeado y hacer las cosas bien.
+            <br><br>
+            Sabes que <span class="highlight">te amo 3 millones</span> y hoy quería recordártelo de una forma especial.
+        </p>
+        <button class="btn-special" onclick="showSurprise()">Una pequeña sorpresa</button>
     </div>
 
     <div class="modal-overlay" id="modal">
         <div class="modal-content">
-            <h2>Pequeño detalle</h2>
-            
-            <div class="video-wrapper">
-                <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExYjBqOGxqanFrd2FwNjVyMDliYzltcHZ4eGxtcGhsc2RjbWVxZHg3OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Z3Rpnbh8gac1mI1CjW/giphy.gif" alt="Sorpresa" class="gif-content">
+            <h2 style="font-family: 'Dancing Script'; color: #6c5ce7; font-size: 28px; margin-bottom: 10px;">Te amo mi hermosa tulipán</h2>
+            <div class="gif-wrapper">
+                <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExYjBqOGxqanFrd2FwNjVyMDliYzltcHZ4eGxtcGhsc2RjbWVxZHg3OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Z3Rpnbh8gac1mI1CjW/giphy.gif" alt="Sorpresa">
             </div>
-            
-            <p style="opacity: 1; transform: translateY(0); margin-bottom: 0;">
-                
-            </p>
+            <p style="margin-bottom: 0;">¡Eres lo más bonito de mi vida! ❤️</p>
         </div>
     </div>
 
     <script>
-        // Generar corazones fondo
-        const bg = document.getElementById('bg');
-        for (let i = 0; i < 15; i++) {
-            let heart = document.createElement('div');
-            heart.classList.add('heart');
+        function showSurprise() {
+            const modal = document.getElementById('modal');
+            modal.style.display = 'flex';
+            
+            // Lluvia de corazones violetas
+            for(let i = 0; i < 40; i++) {
+                setTimeout(createHeart, i * 100);
+            }
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-particle');
+            heart.innerHTML = '💜';
             heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = (Math.random() * 5 + 10) + 's';
-            heart.style.animationDelay = Math.random() * 5 + 's';
-            bg.appendChild(heart);
+            heart.style.top = '90vh';
+            heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 3000);
         }
 
-        // Elementos
-        const paragraphs = document.querySelectorAll('#content-body p');
-        const clueBox = document.getElementById('clue');
-        const btn = document.getElementById('finalBtn');
-        const modal = document.getElementById('modal');
-
-        // Secuencia de aparición al cargar
-        window.onload = () => {
-            let delayTime = 1500;
-
-            // Textos
-            paragraphs.forEach((p) => {
-                setTimeout(() => { p.classList.add('show-text'); }, delayTime);
-                delayTime += 1000;
-            });
-
-            // Pista
-            setTimeout(() => { clueBox.classList.add('visible'); }, delayTime + 500);
-
-            // Botón
-            setTimeout(() => { 
-                btn.classList.add('visible'); 
-                // Auto-scroll suave hacia abajo si es necesario
-                const card = document.querySelector('.card');
-                if(card.scrollHeight > card.clientHeight) {
-                    card.scrollTo({ top: 1000, behavior: 'smooth' });
-                }
-            }, delayTime + 1500);
-        };
-
-        // Lógica del Botón (Solo abre modal y confeti)
-        btn.addEventListener('click', () => {
-            modal.classList.add('active');
-            createConfetti();
+        // Cerrar modal al hacer clic fuera
+        document.getElementById('modal').addEventListener('click', function(e) {
+            if(e.target === this) this.style.display = 'none';
         });
-
-        // Cerrar modal al hacer click fuera
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.remove('active');
-            }
-        });
-
-        function createConfetti() {
-            const colors = ['#ff9a9e', '#a18cd1', '#fbc2eb', '#8fd3f4'];
-            for (let i = 0; i < 50; i++) {
-                const conf = document.createElement('div');
-                conf.classList.add('confetti');
-                conf.style.left = Math.random() * 100 + 'vw';
-                conf.style.top = '-10px';
-                conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                conf.style.animationDuration = (Math.random() * 2 + 1) + 's';
-                document.body.appendChild(conf);
-                setTimeout(() => conf.remove(), 3000);
-            }
-        }
     </script>
+
 </body>
-
 </html>
-
